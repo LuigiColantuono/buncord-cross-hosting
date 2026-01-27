@@ -212,7 +212,7 @@ export class Bridge extends EventEmitter {
     }
 
     private _handleMessage(message: RawMessage, client: BridgeClient) {
-        if (message?._type === undefined) return;
+        if (message?._type === undefined && !message.nonce) return;
 
         if (message._type === messageType.CLIENT_SHARDLIST_DATA_CURRENT) {
             if (!this.shardClusterListQueue[0]) return;
@@ -286,7 +286,7 @@ export class Bridge extends EventEmitter {
             let r = clusterId.reduce((a, b) => a + b, 0);
             const clusterList = client.shardList.map(() => r++);
             
-            res({ shardList: client.shardList, totalShards: this.totalShards, clusterList: clusterList });
+            res({ shardList: client.shardList, totalShards: this.totalShards, clusterList: clusterList, _type: messageType.CUSTOM_REPLY });
             return;
         }
 

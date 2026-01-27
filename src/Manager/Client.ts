@@ -136,7 +136,7 @@ export class Client extends EventEmitter {
     }
 
     private _handleMessage(message: RawMessage) {
-        if (message?._type === undefined) return;
+        if (message?._type === undefined && !message.nonce) return;
 
         // Handle responses to our requests
         if (message.nonce && this.listenerCount(`response:${message.nonce}`) > 0) {
@@ -270,7 +270,8 @@ export class Client extends EventEmitter {
         this.socket.write(JSON.stringify(message));
     }
 
-    public async request(message: RawMessage, timeout = 30000): Promise<any> {
+    public async request(message: RawMessage, options: number | { timeout?: number; internal?: boolean } = 30000): Promise<any> {
+        const timeout = typeof options === 'number' ? options : options.timeout ?? 30000;
         if (!this.connected || !this.socket) throw new Error('Client is not connected to Bridge');
         
         const nonce = message.nonce || Math.random().toString(36).substring(2, 15);

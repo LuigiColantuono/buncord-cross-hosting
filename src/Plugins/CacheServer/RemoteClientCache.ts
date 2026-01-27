@@ -20,7 +20,7 @@ export class RemoteClientCache {
                     value,
                 },
             },
-            { internal: true },
+            30000,
         );
     }
 
@@ -33,7 +33,7 @@ export class RemoteClientCache {
                     key,
                 },
             },
-            { internal: true },
+            30000,
         );
     }
 
@@ -46,7 +46,7 @@ export class RemoteClientCache {
                     key,
                 },
             },
-            { internal: true },
+            30000,
         );
     }
 
@@ -56,7 +56,7 @@ export class RemoteClientCache {
                 _type: messageType.SERVER_CACHE_CLEAR_REQUEST,
                 path: this.options.path,
             },
-            { internal: true },
+            30000,
         );
     }
 }

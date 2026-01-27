@@ -91,7 +91,7 @@ export class IPCMessage extends BaseMessage {
         if (typeof message !== 'object') throw new TypeError('The Message has to be a object');
         const baseMessage = new BaseMessage({
             ...message,
-            _type: messageType.CUSTOM_REPLY,
+            _type: (message as any)._type || messageType.CUSTOM_REPLY,
             nonce: this.nonce,
             _result: message,
         });
