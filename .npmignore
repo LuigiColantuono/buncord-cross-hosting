@@ -3,8 +3,10 @@ node_modules/
 bun.lock
 tsconfig.json
 .gitignore
+.gitattributes
 .npmignore
 .github/
+.git/
 
 # Exclude source testing/examples if they were to exist
 test/
