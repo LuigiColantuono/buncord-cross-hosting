@@ -1,0 +1,37 @@
+{
+    "name": "buncord-cross-hosting",
+    "version": "1.0.0",
+    "description": "Native Bun implementation for cross-hosting Discord bots with buncord-hybrid-sharding.",
+    "main": "src/index.ts",
+    "type": "module",
+    "dependencies": {
+        "buncord-hybrid-sharding": "^1.0.1"
+    },
+    "scripts": {
+        "start:bridge": "bun src/test/server.ts",
+        "start:cluster": "bun src/test/cluster.ts",
+        "test": "bun test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LuigiColantuono/buncord-cross-hosting.git"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "keywords": [
+        "discord",
+        "bun",
+        "buncord",
+        "cross-hosting",
+        "sharding",
+        "clustering"
+    ],
+    "author": "LuigiColantuono",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/bun": "^1.3.6",
+        "discord.js": "^14.25.1",
+        "typescript": "~5.9.3"
+    }
+}
