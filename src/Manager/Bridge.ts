@@ -243,6 +243,11 @@ export class Bridge extends EventEmitter {
     }
 
     private _handleRequest(message: RawMessage, res: (data: any) => Promise<void>, client: BridgeClient) {
+        // Heartbeat
+        if (message._type === messageType.HEARTBEAT) {
+            return res({ _type: messageType.HEARTBEAT_ACK });
+        }
+
         // BroadcastEval
         if (message._type === messageType.CLIENT_BROADCAST_REQUEST) {
             const clients = Array.from(this.clients.values()).filter(
