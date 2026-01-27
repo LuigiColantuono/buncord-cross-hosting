@@ -1,6 +1,10 @@
 <p align="center"><a href="https://github.com/LuigiColantuono/buncord-cross-hosting"><img src="https://img.shields.io/badge/Bun-Networking-black?logo=bun"></a></p>
 <p align="center"><img src="https://img.shields.io/npm/v/buncord-cross-hosting"> <img src="https://img.shields.io/npm/dm/buncord-cross-hosting?label=downloads"> <img src="https://img.shields.io/npm/l/buncord-cross-hosting"> <img src="https://img.shields.io/github/repo-size/LuigiColantuono/buncord-cross-hosting"></p>
 
+<p align="center">
+<img width="300" height="200" alt="Buncord-Cross-Hosting-Logo" src="https://github.com/user-attachments/assets/7fb6dc7b-7ed9-486f-95f7-798a484fe455" />
+<p>
+    
 # buncord-cross-hosting
 
 The ultimate cross-hosting library for Bun, optimized for ultra-low latency (<2ms) and native performance. Built to work seamlessly with `buncord-hybrid-sharding`.
