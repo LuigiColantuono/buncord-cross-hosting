@@ -2,8 +2,7 @@
 import { RemoteServerCache } from './RemoteServerCache';
 import { messageType } from '../../types/shared';
 import { Bridge } from '../../Manager/Bridge';
-import { RawMessage } from 'discord-hybrid-sharding';
-import { Connection } from 'net-ipc';
+import { RawMessage } from '../../Structures/IPCMessage';
 export class CacheServer {
     server: Bridge;
     path: { path: string; maxSize: number }[];
@@ -36,7 +35,7 @@ export class CacheServer {
             if (message._type === messageType.SERVER_CACHE_CLEAR_REQUEST) {
                 return this._handleCacheClear(message, res);
             }
-            return _handleRequest(message, res, client as Connection);
+            return _handleRequest(message, res, client as any);
         });
     }
 
