@@ -18,6 +18,15 @@ The ultimate cross-hosting library for Bun, optimized for ultra-low latency (<2m
 -   **Rolling Restarts:** Seamlessly update shard counts and machine configurations without downtime.
 -   **Hybrid-Sharding Integration:** Specifically tailored for `buncord-hybrid-sharding`.
 
+### 📦 Bundle Size Comparison: Cross-Hosting
+
+| Package | Size (Unpacked) | Total Files | Dependencies | Install Weight (est.) |
+| :--- | :--- | :--- | :--- | :--- |
+| **discord-cross-hosting** | 153 kB | 48 | `net-ipc`, `lodash`, etc. | ~500 kB |
+| **buncord-cross-hosting** | 52.8 kB | 14 | **NONE** (Native Bun) | **~53 kB** |
+
+🚀 **Result: ~89% savings on total installation weight and zero external networking dependencies!**
+
 # Installation
 
 ```cli
