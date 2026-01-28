@@ -1,4 +1,4 @@
-import { CacheServer } from './CacheServer';
+import type { CacheServer } from './CacheServer.ts';
 
 class Collection<K, V> extends Map<K, V> {
     maxSize?: number;

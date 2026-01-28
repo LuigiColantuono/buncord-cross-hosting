@@ -1,7 +1,10 @@
 import { EventEmitter } from 'node:events';
-import { ClusterManager, Cluster, evalOptions } from 'buncord-hybrid-sharding';
-import { IPCMessage, BaseMessage, RawMessage } from '../Structures/IPCMessage';
-import { CrossHostMessage, messageType, ClientEvents } from '../types/shared';
+import type { ClusterManager, Cluster, evalOptions } from 'buncord-hybrid-sharding';
+import type { RawMessage } from '../Structures/IPCMessage.ts';
+import { IPCMessage, BaseMessage } from '../Structures/IPCMessage.ts';
+import type { CrossHostMessage, ClientEvents } from '../types/shared.ts';
+import { messageType } from '../types/shared.ts';
+import type { Socket } from 'bun';
 
 export interface ClientOptions {
     /**
@@ -39,10 +42,10 @@ export class Client extends EventEmitter {
     totalShards: number;
     manager?: ClusterManager & { netipc?: Client };
     clusterList: number[];
-    private socket?: any;
+    private socket?: Socket<unknown>;
     private options: ClientOptions;
-    private heartbeatTimer?: any;
-    private reconnectTimer?: any;
+    private heartbeatTimer?: Timer;
+    private reconnectTimer?: Timer;
     private connected = false;
 
     constructor(options: ClientOptions) {
@@ -287,7 +290,7 @@ export class Client extends EventEmitter {
                 }
             };
             this.on(`response:${nonce}` as any, listener);
-            this.socket.write(JSON.stringify(message));
+            this.socket!.write(JSON.stringify(message));
         });
     }
 

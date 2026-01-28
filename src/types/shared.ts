@@ -1,5 +1,5 @@
-import { evalOptions } from 'buncord-hybrid-sharding';
-import { IPCMessage } from '../Structures/IPCMessage';
+import type { evalOptions } from 'buncord-hybrid-sharding';
+import type { IPCMessage } from '../Structures/IPCMessage.ts';
 
 export interface ClientReadyEvent {
     url: string;

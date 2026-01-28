@@ -1,7 +1,7 @@
 import { generateNonce } from 'buncord-hybrid-sharding';
-import type { Client } from '../Manager/Client';
-import type { BridgeClient } from '../Manager/Bridge';
-import { messageType } from '../types/shared';
+import type { Client } from '../Manager/Client.ts';
+import type { BridgeClient } from '../Manager/Bridge.ts';
+import { messageType } from '../types/shared.ts';
 
 export interface RawMessage {
     nonce?: string;
@@ -30,7 +30,7 @@ export class BaseMessage {
      * Destructs the Message Object and initializes it on the Constructor
      */
     private destructMessage(message: RawMessage) {
-        for (let [key, value] of Object.entries(message)) {
+        for (const [key, value] of Object.entries(message)) {
             this[key] = value;
         }
         if (message.nonce) this.nonce = message.nonce;

@@ -1,6 +1,8 @@
-import { ClusterClient, DjsDiscordClient, evalOptions } from 'buncord-hybrid-sharding';
-import { BaseMessage, RawMessage } from '../Structures/IPCMessage';
-import { CrossHostMessage, messageType } from '../types/shared';
+import type { ClusterClient, DjsDiscordClient, evalOptions } from 'buncord-hybrid-sharding';
+import type { RawMessage } from '../Structures/IPCMessage.ts';
+import { BaseMessage } from '../Structures/IPCMessage.ts';
+import type { CrossHostMessage} from '../types/shared.ts';
+import { messageType } from '../types/shared.ts';
 
 export class Shard {
     shard: ClusterClient<DjsDiscordClient>;

@@ -1,6 +1,7 @@
-import { Serializable } from 'child_process';
-import { Client } from '../../Manager/Client';
-import { messageType } from '../../types/shared';
+import type { Client } from '../../Manager/Client.ts';
+import { messageType } from '../../types/shared.ts';
+
+export type Serializable = string | number | boolean | object | any[] | null;
 
 export class RemoteClientCache {
     options: { path: string; maxSize: number };

@@ -1,6 +1,6 @@
-import { Client } from '../../Manager/Client';
+import type { Client } from '../../Manager/Client.ts';
 
-import { RemoteClientCache } from './RemoteClientCache';
+import { RemoteClientCache } from './RemoteClientCache.ts';
 export class CacheClient {
     client: Client;
     path: { path: string; maxSize: number }[];

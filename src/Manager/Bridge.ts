@@ -1,7 +1,15 @@
 import { EventEmitter } from 'node:events';
-import { IPCMessage, RawMessage } from '../Structures/IPCMessage';
-import { chunkArray, evalOptions, fetchRecommendedShards, shardIdForGuildId } from 'buncord-hybrid-sharding';
-import { BridgeEvents, BroadcastEvalOptions, messageType } from '../types/shared';
+import type { RawMessage } from '../Structures/IPCMessage.ts';
+import { IPCMessage } from '../Structures/IPCMessage.ts';
+import type { evalOptions} from 'buncord-hybrid-sharding';
+import { chunkArray, fetchRecommendedShards, shardIdForGuildId } from 'buncord-hybrid-sharding';
+import type { BridgeEvents, BroadcastEvalOptions} from '../types/shared.ts';
+import { messageType } from '../types/shared.ts';
+import type { Socket, SocketListener } from 'bun';
+
+export interface BridgeSocket extends Socket<unknown> {
+    id: string;
+}
 
 export interface BridgeOptions {
     /**
@@ -64,7 +72,7 @@ export class Bridge extends EventEmitter {
     shardClusterList: number[][];
     shardClusterListQueue: number[][];
     clients: Map<string, BridgeClient>;
-    private server?: any;
+    private server?: SocketListener<undefined>;
     private options: BridgeOptions;
 
     constructor(options: BridgeOptions) {
@@ -87,28 +95,27 @@ export class Bridge extends EventEmitter {
     }
 
     public listen() {
-        const self = this;
         this.server = Bun.listen({
             hostname: this.options.host || '0.0.0.0',
             port: this.options.port,
             socket: {
-                open(socket) {
-                    (socket as any).id = Math.random().toString(36).substring(2, 15);
-                    self._debug(`[Connect] New connection: ${(socket as any).id}`);
+                open: (socket) => {
+                    (socket as BridgeSocket).id = Math.random().toString(36).substring(2, 15);
+                    this._debug(`[Connect] New connection: ${(socket as BridgeSocket).id}`);
                 },
-                data(socket, data) {
+                data: (socket, data) => {
                     try {
                         const message = JSON.parse(data.toString());
-                        self._handleSocketData(socket, message);
+                        this._handleSocketData(socket as BridgeSocket, message);
                     } catch (e) {
-                        self._debug(`[Error] Failed to parse message: ${e}`);
+                        this._debug(`[Error] Failed to parse message: ${e}`);
                     }
                 },
-                close(socket) {
-                    self._handleDisconnect(socket);
+                close: (socket) => {
+                    this._handleDisconnect(socket as BridgeSocket);
                 },
-                error(socket, error) {
-                    self.emit('error', error);
+                error: (socket, error) => {
+                    this.emit('error', error);
                 }
             }
         });
@@ -124,7 +131,7 @@ export class Bridge extends EventEmitter {
         }
     }
 
-    private _handleSocketData(socket: any, message: any) {
+    private _handleSocketData(socket: BridgeSocket, message: RawMessage) {
         const id = socket.id;
 
         // AUTHENTICATION
@@ -195,7 +202,7 @@ export class Bridge extends EventEmitter {
         }
     }
 
-    private _handleDisconnect(socket: any) {
+    private _handleDisconnect(socket: BridgeSocket) {
         const id = socket.id;
         const cachedClient = this.clients.get(id);
         if (!cachedClient) return;

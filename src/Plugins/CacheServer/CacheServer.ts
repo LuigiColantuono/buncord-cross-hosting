@@ -1,8 +1,8 @@
 // @ts-check
-import { RemoteServerCache } from './RemoteServerCache';
-import { messageType } from '../../types/shared';
-import { Bridge } from '../../Manager/Bridge';
-import { RawMessage } from '../../Structures/IPCMessage';
+import { RemoteServerCache } from './RemoteServerCache.ts';
+import { messageType } from '../../types/shared.ts';
+import type { Bridge } from '../../Manager/Bridge.ts';
+import type { RawMessage } from '../../Structures/IPCMessage.ts';
 export class CacheServer {
     server: Bridge;
     path: { path: string; maxSize: number }[];
@@ -15,7 +15,7 @@ export class CacheServer {
         this._overwriteHandlers();
     }
     _overwriteHandlers() {
-        // @ts-expect-error
+        // @ts-expect-error - Bridge instance might not have _handleRequest typed
         const { _handleRequest } = this.server;
         //Remove all request listerns
         this.server.off('request', _handleRequest);
@@ -84,7 +84,7 @@ export class CacheServer {
             if (path[i]) cache[key] = new RemoteServerCache(this, path[i]!);
         }
 
-        // @ts-expect-error
+        // @ts-expect-error - Internal debug method access
         this.server._debug(`[CM => CacheServer] CacheServer created with ${Object.keys(cache).length} cache paths`);
         return cache;
     }

@@ -1,6 +1,6 @@
 {
     "name": "buncord-cross-hosting",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Native Bun implementation for cross-hosting Discord bots with buncord-hybrid-sharding.",
     "main": "src/index.ts",
     "type": "module",
@@ -8,6 +8,7 @@
         "buncord-hybrid-sharding": "^1.0.1"
     },
     "scripts": {
+        "lint": "eslint src/**",
         "start:bridge": "bun src/test/server.ts",
         "start:cluster": "bun src/test/cluster.ts",
         "test": "bun test"
@@ -31,7 +32,10 @@
     "license": "MIT",
     "devDependencies": {
         "@types/bun": "^1.3.6",
-        "discord.js": "^14.25.1",
-        "typescript": "~5.9.3"
+        "eslint": "9.39.2",
+        "globals": "^15.14.0",
+        "typescript": "~5.9.3",
+        "typescript-eslint": "^8.21.0"
     }
 }
+
