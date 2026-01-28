@@ -1,6 +1,6 @@
 {
     "name": "buncord-cross-hosting",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Native Bun implementation for cross-hosting Discord bots with buncord-hybrid-sharding.",
     "main": "src/index.ts",
     "type": "module",
