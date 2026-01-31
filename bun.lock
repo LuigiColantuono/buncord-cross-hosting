@@ -5,7 +5,7 @@
     "": {
       "name": "buncord-cross-hosting",
       "dependencies": {
-        "buncord-hybrid-sharding": "^1.0.5",
+        "buncord-hybrid-sharding": "^1.0.6",
       },
       "devDependencies": {
         "@types/bun": "latest",
@@ -109,7 +109,7 @@
 
     "bun-types": ["bun-types@1.3.8", "", { "dependencies": { "@types/node": "*" } }, "sha512-fL99nxdOWvV4LqjmC+8Q9kW3M4QTtTR1eePs94v5ctGqU8OeceWrSUaRw3JYb7tU3FkMIAjkueehrHPPPGKi5Q=="],
 
-    "buncord-hybrid-sharding": ["buncord-hybrid-sharding@1.0.5", "", { "peerDependencies": { "discord.js": "^14.0.0" } }, "sha512-zoAA9xl1kg7lla9EygtX4y4kCFeFOHxFRYQ4pcU2RRNCVsWr1wYNvtpzeIAsWqOd+X9xQH8GHi3jEYTThTwZqg=="],
+    "buncord-hybrid-sharding": ["buncord-hybrid-sharding@1.0.6", "", { "peerDependencies": { "discord.js": "^14.0.0", "redis": "^5.0.0" }, "optionalPeers": ["redis"] }, "sha512-5wGhjywwne8XljL9P3JPMqAEnjUdm3qpAZwjNuvd8aXnr2/bdTgXsSIEr0higc2/LctQ6XvQZHzijO91TB6rWA=="],
 
     "callsites": ["callsites@3.1.0", "", {}, "sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ=="],
 
