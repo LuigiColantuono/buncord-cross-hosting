@@ -1,5 +1,6 @@
 {
     "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"],
     "compilerOptions": {
         "lib": ["ESNext"],
         "target": "ESNext",
@@ -13,6 +14,7 @@
         "declarationMap": false,
         "esModuleInterop": true,
         "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "allowSyntheticDefaultImports": true,
         "strict": true,
