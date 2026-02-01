@@ -111,5 +111,7 @@ client.login('TOKEN');
 
 Refer to the source code for detailed type definitions. The library is written in pure TypeScript and leverages Bun's native types for networking.
 
----
-**Maintained by Luigi Colantuono**
+## 📝 License
+
+This project is licensed under the MIT License. See the [LICENSE](file:///LICENSE) file for details.
+Portions of this code are based on [`discord-cross-hosting`](https://github.com/meister03/discord-cross-hosting), copyright of the author.
