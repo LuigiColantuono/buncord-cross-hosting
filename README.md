@@ -9,7 +9,7 @@
 
 The ultimate cross-hosting library for Bun, optimized for ultra-low latency (<2ms) and native performance. Built to work seamlessly with `buncord-hybrid-sharding`.
 
-# Features:
+## Features
 
 -   **Native Bun Networking:** Uses `Bun.listen` and `Bun.connect` for maximum performance and minimum overhead.
 -   **Ultra Low Latency:** Designed for inter-VPS communication with <2ms latency targets.
@@ -27,16 +27,16 @@ The ultimate cross-hosting library for Bun, optimized for ultra-low latency (<2m
 
 🚀 **Result: ~89% savings on total installation weight and zero external networking dependencies!**
 
-# Installation
+## Installation
 
 ```cli
 bun add buncord-cross-hosting
 bun add buncord-hybrid-sharding
 ```
 
-# Quick Start Guide:
+## Quick Start Guide
 
-## 1. Bridge (Coordinator)
+### 1. Bridge (Coordinator)
 The Bridge handles the coordination of shards across all machines.
 
 ```typescript
@@ -59,7 +59,7 @@ bridge.on('ready', (addr) => {
 });
 ```
 
-## 2. Client (Machine)
+### 2. Client (Machine)
 The Client runs on each VPS/Machine and connects to the Bridge.
 
 ```typescript
@@ -87,7 +87,7 @@ client.requestShardData().then(data => {
 });
 ```
 
-## 3. Shard (Bot)
+### 3. Shard (Bot)
 Access cross-hosting features directly from your bot instance.
 
 ```typescript
@@ -107,7 +107,7 @@ client.on('ready', async () => {
 client.login('TOKEN');
 ```
 
-# API References
+## API References
 
 Refer to the source code for detailed type definitions. The library is written in pure TypeScript and leverages Bun's native types for networking.
 
